@@ -50,7 +50,7 @@ export class PaymentService {
   }
 
   updatePayment(reqData:any) {
-    const url = `${this.API_BASE_URL}/api/payments?payment_id=${reqData.paymentId}&order_id=${reqData.orderId}`;
+    const url = `${this.API_BASE_URL}/api/payments?order_id=${reqData.orderId}&payment_id=${reqData.paymentId}`;
 
     console.log("update payment data ", reqData);
     const headers = new HttpHeaders({
