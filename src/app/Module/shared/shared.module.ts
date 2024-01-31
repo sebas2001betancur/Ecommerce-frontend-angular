@@ -12,6 +12,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { AddressCardComponent } from './components/address-card/address-card.component';
 import { OrderTrackerComponent } from './components/order-tracker/order-tracker.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatMenuModule,
     MatDividerModule,
+    MatDialogModule
   ],
   exports: [
     NavbarComponent,

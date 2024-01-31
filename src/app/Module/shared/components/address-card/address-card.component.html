@@ -1,10 +1,10 @@
 <div class="space-y-3">
 
-  <p class="font-semibold">Code With Zosh</p>
-  <p>Mumbai, thane, new shivam building</p>
+  <p class="font-semibold">{{address.firstName}} {{address.lastName}}</p>
+  <p>{{address.city}}, {{address.streetAddress}}, {{address.state}}, {{address?.zipCode}}</p>
 
   <div class="space-y-1">
     <p class="font-semibold">Phone Number</p>
-    <p>+91897654789</p>
+    <p>{{address.mobile}}</p>
   </div>
 </div>

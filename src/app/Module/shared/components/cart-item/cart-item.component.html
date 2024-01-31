@@ -4,19 +4,18 @@
 
     <div class="w-[5rem] h-[5rem] lg:w-[9rem] lg:h-[9rem]">
       <img class="w-full h-full object-cover object-top"
-        src="https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/i/v/x/xxl-br-ad-kt-105-adwyn-peter-original-imagj4zyd2q7t6cg.jpeg?q=70"
-        alt="">
+        [src]="cartItem?.product?.imageUrl" *ngIf="cartItem?.product?.imageUrl" alt="Product Image">
     </div>
     <div class="ml-5 space-y-1">
-      <p class="font-semibold">Men Solid Cotton Blend Straight Kurta</p>
-      <p class="text-gray-500">Size : M, Black</p>
-      <p class="text-gray-500 mt-2">Seller : KSH Trendz</p>
+      <p class="font-semibold">{{cartItem.product.title}}</p>
+      <p class="text-gray-500">Size : {{cartItem.size}}, Black</p>
+      <p class="text-gray-500 mt-2">Seller : {{cartItem.brand}}</p>
 
       <div class="flex space-x-2 items-center pt-3">
 
-        <p class="text-gray-500 line-through">$1499</p>
-        <p class="font-semibold text-lg">$265</p>
-        <p class="text-green-600 font-semibold">82% off</p>
+        <p class="text-gray-500 line-through">${{cartItem.product.price}}</p>
+        <p class="font-semibold text-lg">${{cartItem.product.discountedPrice}}</p>
+        <p class="text-green-600 font-semibold">{{cartItem.product.discountPersent}}% off</p>
       </div>
     </div>
   </div>
@@ -26,16 +25,14 @@
     <div class="flex items-center space-x-2">
       <div class="example-button-container">
 
-        <button mat-mini-fab color="accent" (click)="updateCartItem(-1)" [disabled]="true">
+        <button mat-mini-fab color="accent" (click)="updateCartItem(-1)" [disabled]="cartItem.quantity===1">
 
           <mat-icon>remove</mat-icon>
         </button>
 
       </div>
 
-      <span class="py-1 px-7 border border-gray-800 rounded-sm">
-        1
-      </span>
+      <span class="py-1 px-7 border border-gray-800 rounded-sm">{{cartItem.quantity}}</span>
 
       <div class="example-button-container">
 

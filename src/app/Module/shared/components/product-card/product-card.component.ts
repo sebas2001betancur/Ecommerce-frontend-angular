@@ -12,6 +12,6 @@ export class ProductCardComponent {
   constructor(private router: Router) {}
 
   navigate() {
-    this.router.navigate([`product-details/${5}`]);
+    this.router.navigate([`product-details/${this.product.id}`]);
   }
 }

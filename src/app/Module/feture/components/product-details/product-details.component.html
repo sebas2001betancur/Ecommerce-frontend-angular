@@ -6,21 +6,21 @@
 
     <div class="col-span-2 flex items-center flex-col">
       <img
-        src="https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/x/f/6/xxl-new-white-nofilter-original-imaghzggudfezpr8.jpeg?q=70"
+        [src]="product.imageUrl"
         alt="">
     </div>
 
     <div class="col-span-1 space-y-10 mt-1 lg:mt-1">
       <div class="space-y-2">
 
-        <p class="font-semibold text-gray-600 text-lg">Nofilter</p>
-        <p class="text-xl">Men Solid Pure Cotton Straight</p>
+        <p class="font-semibold text-gray-600 text-lg">{{product.brand}}</p>
+        <p class="text-xl">{{product.title}}</p>
       </div>
 
       <div class="flex items-center space-x-5">
-        <p class="text-lg">$393</p>
-        <p class="text-lg text-gray-700 line-through">$2999</p>
-        <p class="text-green-400 font-semibold text-lg">$80%</p>
+        <p class="text-lg">${{product.discountedPrice}}</p>
+        <p class="text-lg text-gray-700 line-through">${{product.price}}</p>
+        <p class="text-green-400 font-semibold text-lg">{{product.discountPersent}}%</p>
       </div>
 
       <div>
@@ -46,9 +46,7 @@
       </div>
 
       <div>
-        <p class="text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum animi optio aliquam
-          quasi quae magnam vero molestias debitis temporibus cumque placeat molestiae quisquam incidunt hic, explicabo
-          inventore cupiditate autem dignissimos.</p>
+        <p class="text-gray-600">{{product.description}}</p>
 
         <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, quae quo? Ratione vel,
           cupiditate soluta consectetur non optio dicta vero aperiam consequatur nihil vitae at dignissimos sint officia

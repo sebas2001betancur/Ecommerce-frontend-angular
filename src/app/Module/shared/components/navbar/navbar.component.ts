@@ -1,5 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import { AuthComponent } from 'src/app/Module/auth/auth.component';
+import { UserService } from 'src/app/State/User/user.service';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/Models/AppState';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +14,12 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   currentSection: any;
   isNavbarContentOpen: any;
+  userProfile:any; 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    private dialog : MatDialog,
+    private userService:UserService,
+    private store:Store<AppState>) {}
 
   openNavbarContent(section: any) {
     this.isNavbarContentOpen = true;
@@ -22,6 +31,18 @@ export class NavbarComponent {
 
   navigateTo(path: any) {
     this.router.navigate([path]);
+  }
+
+  ngOnInit(){
+    if(localStorage.getItem("jwt")) this.userService.getUserProfile()
+
+    this.store.pipe(select((store)=>store.user)).subscribe((user)=>{
+      this.userProfile=user.userProfile;
+      if(user.userProfile){
+        this.dialog.closeAll()
+      }
+      console.log("user ",user)
+    })
   }
 
   @HostListener('document:click', [`$event`])
@@ -40,5 +61,17 @@ export class NavbarComponent {
     if (modalContainer && !clickInsideButton && this.isNavbarContentOpen) {
       this.closeNavbarContent();
     }
+  }
+
+  handleOpenLoginModal=()=>{
+    console.log("handle open login module")
+    this.dialog.open(AuthComponent,{
+      width:"400px",
+      disableClose:false
+    })
+  }
+
+  handleLogout=()=>{
+    this.userService.logout();
   }
 }
